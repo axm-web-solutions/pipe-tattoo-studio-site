@@ -87,7 +87,11 @@
   }
 
   .gallery-card {
-    @apply relative overflow-hidden rounded-sm group cursor-pointer;
+    @apply relative overflow-hidden rounded-sm cursor-pointer transition-transform duration-500;
+  }
+
+  .gallery-card:hover {
+    transform: translateY(-6px);
   }
 
   .gallery-card::after {
@@ -101,7 +105,7 @@
   }
 
   .service-card {
-    @apply bg-card border border-border p-8 transition-all duration-500 hover:border-primary/40;
+    @apply bg-card border border-border p-6 md:p-8 transition-all duration-500 hover:border-primary/40;
     background: linear-gradient(145deg, hsl(0 0% 8%), hsl(0 0% 6%));
   }
 
@@ -120,12 +124,24 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-medium uppercase tracking-widest text-sm transition-all duration-300 hover:bg-primary/90;
+    @apply inline-flex items-center justify-center px-6 md:px-8 py-3 bg-primary text-primary-foreground font-medium uppercase tracking-widest text-xs sm:text-sm transition-all duration-300 hover:bg-primary/90;
     font-family: 'Inter', sans-serif;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center px-8 py-3 border border-primary/50 text-primary font-medium uppercase tracking-widest text-sm transition-all duration-300 hover:bg-primary/10;
+    @apply inline-flex items-center justify-center px-6 md:px-8 py-3 border border-primary/50 text-primary font-medium uppercase tracking-widest text-xs sm:text-sm transition-all duration-300 hover:bg-primary/10;
     font-family: 'Inter', sans-serif;
   }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
